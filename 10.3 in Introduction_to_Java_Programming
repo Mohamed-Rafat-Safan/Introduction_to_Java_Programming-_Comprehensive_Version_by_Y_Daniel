@@ -1,0 +1,163 @@
+
+
+/*
+# Introduction_to_Java_Programming-_Comprehensive_Version_by_Y_Daniel
+حل بعض الاسأله والمسائل في هذا الكتاب
+10.3
+
+(The MyInteger class) Design a class named MyInteger. The class contains:
+■ An int data field named value that stores the int value represented by this
+object.
+■ A constructor that creates a MyInteger object for the specified int value.
+■ A get method that returns the int value.
+■ The methods isEven(), isOdd(), and isPrime() that return true if the
+value in this object is even, odd, or prime, respectively.
+■ The static methods isEven(int), isOdd(int), and isPrime(int) that
+return true if the specified value is even, odd, or prime, respectively.
+■ The static methods isEven(MyInteger), isOdd(MyInteger), and
+isPrime(MyInteger) that return true if the specified value is even, odd, or
+prime, respectively.
+■ The methods equals(int) and equals(MyInteger) that return true if the
+value in this object is equal to the specified value.
+■ A static method parseInt(char[]) that converts an array of numeric characters
+to an int value.
+■ A static method parseInt(String) that converts a string into an int value.
+Draw the UML diagram for the class and then implement the class. Write a client
+program that tests all methods in the class.
+*/
+
+
+ 
+package main;
+
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+        myInteger int1 = new myInteger(23);
+        myInteger int2 = new myInteger(56);
+        myInteger int3 = new myInteger(2);
+        myInteger int4 = new myInteger(23);
+
+        System.out.printf("%d is prime? %s%n", int1.getValue(), int1.isPrime());
+        System.out.printf("%d is prime? %s%n", int2.getValue(), int2.isPrime());
+        System.out.printf("%d is prime? %s%n", int3.getValue(), int3.isPrime());
+
+        System.out.printf("%d is even? %s%n", int1.getValue(), int1.isEven());
+        System.out.printf("%d is even? %s%n", int2.getValue(), int2.isEven());
+        System.out.printf("%d is even? %s%n", int3.getValue(), int3.isEven());
+
+        System.out.printf("93 is odd? %s%n", myInteger.isOdd(93));
+        
+        System.out.printf("%d equals %d? %s%n", int1.getValue(), int4.getValue(), int1.equals(int4));
+
+        System.out.printf("%d%n", myInteger.parseInt(new char[] {'1', '5', '6'}));
+        System.out.printf("%d%n", myInteger.parseInt("454"));
+    }
+    
+}
+
+class myInteger{
+    private int value ;
+    
+    public myInteger(int value)
+    {
+        this.value = value ;
+    }
+    public int getValue()
+    {
+        return value ;
+    }
+    public boolean isEven()
+    {
+        return (value%2==0) ;
+    }
+    public boolean isOdd()
+    {
+        return (value%2!=0) ;
+    }
+    public boolean isPrime()
+    {
+        boolean flag = true ;
+        for(int i=2 ; i<=(value/2) ; i++)
+        {
+            if(value%i == 0){
+                flag = false ;
+                break ;
+            }
+        }
+        if(flag)
+            return true ;
+        else
+            return false ;
+    }
+    
+    public static boolean isEven(int v)
+    {
+        return (v%2==0) ;
+    }
+    public static boolean isOdd(int v)
+    {
+        return (v%2!=0) ;
+    }
+    public static boolean isPrime(int v)
+    {
+        boolean flag = true ;
+        for(int i=2 ; i<=(v/2) ; i++)
+        {
+            if(v%i == 0){
+                flag = false ;
+                break ;
+            }
+        }
+        if(flag)
+            return true ;
+        else
+            return false ;
+    }
+    
+    public static boolean isEven(myInteger integer)
+    {
+        return integer.isEven() ;
+    }
+    public static boolean isOdd(myInteger integer)
+    {
+        return integer.isOdd() ;
+    }
+    public static boolean isPrime(myInteger integer)
+    {
+        return integer.isPrime() ;
+    }
+    
+    public boolean equals(int v)
+    {
+        return v == value;
+    }
+    public boolean equals(myInteger myInt)
+    {
+        return myInt.value == this.value ;
+    }
+    
+//    public static int parseInt(char ch[])
+//    {
+//        int num = 0 ;
+//        for(char i:ch)
+//        {
+//            num += Character.getNumericValue(i);
+//        }
+//        return num ;
+//    }
+//    
+    public static int parseInt(char[] values) {
+        int sum = 0;
+        for (char i : values) {
+            sum += Character.getNumericValue(i);
+        }
+        return sum;
+    }
+    public static int parseInt(String s)
+    {
+       return Integer.parseInt(s) ;
+    }
+    
+}
