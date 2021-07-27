@@ -1,0 +1,57 @@
+# Introduction_to_Java_Programming-_Comprehensive_Version_by_Y_Daniel
+حل بعض الاسأله والمسائل في هذا الكتاب
+
+
+
+
+package examble_2;
+
+
+public class Example_2 {
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        MyPoint p1 = new MyPoint();
+        MyPoint p2 = new MyPoint(10, 30.5);
+
+        System.out.println(p1.distance(p2));
+        System.out.println(p1.distance(1, 0));
+    }
+    
+}
+
+class MyPoint
+{
+    private double x ;
+    private double y ;
+
+    public MyPoint() {
+        x = 0 ;
+        y = 0 ;
+    }
+
+    public MyPoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+    
+    public double distance(MyPoint ob)
+    {
+        return distance(ob.x , ob.y) ;
+    }
+    
+    public double distance(double new_x , double new_y)
+    {
+        return Math.sqrt(Math.pow((new_x-this.x) , 2) + Math.pow((new_y-this.y) , 2)) ;
+    }
+    
+    
+}
